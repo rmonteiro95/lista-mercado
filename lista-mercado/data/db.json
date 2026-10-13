@@ -1,0 +1,11 @@
+{
+  "tasks": [
+    {
+      "id": "l8qL1uNDEyY",
+      "nome": "arroz",
+      "quantidade": 1,
+      "preco": "3.50"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

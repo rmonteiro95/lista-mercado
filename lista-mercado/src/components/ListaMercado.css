@@ -1,0 +1,87 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+
+.main-container{
+    display: relative;
+    width: 100%;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.head-container{
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: 300;
+    gap: 20px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,20.75);
+}
+
+.titulo-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.titulo-lista{
+    background-color: #071d29;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+}
+
+.campo-valorTotal{
+    margin:0;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.inputs-container{
+    display: flex;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 90%;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.inputs-container button{
+    border:none;
+    width: 44.5%;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+.inputs-container input{  
+    /* margin-right: 10px; */
+    border:none;
+    outline:none;
+}
+
+.input-nomeProduto{
+    width: 40%;
+}
+.input-quantidadeProduto{
+    width: 5%;
+}
+.input-precoProduto{
+    width: 9.5%;
+}
