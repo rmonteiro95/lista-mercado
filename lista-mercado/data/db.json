@@ -1,10 +1,18 @@
 {
   "tasks": [
     {
-      "id": "l8qL1uNDEyY",
+      "id": "MpACxUOpQwQ",
       "nome": "arroz",
       "quantidade": 1,
-      "preco": "3.50"
+      "preco": "5.50",
+      "verificado": true
+    },
+    {
+      "id": "4QUZAXyiGek",
+      "nome": "bolacha",
+      "quantidade": 1,
+      "preco": "3.50",
+      "verificado": true
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

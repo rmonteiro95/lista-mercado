@@ -1,7 +1,7 @@
 import React from 'react'
 import './ProdutoItemLista.css'
 
-export default function ProdutoItemLista({produto, editarProduto, deletarProduto}) {
+export default function ProdutoItemLista({produto, editarProduto, deletarProduto, verificarProduto}) {
   return (
     <div className='produto-item'>
       <button onClick={deletarProduto}><i className="bi bi-0-circle"></i></button>
@@ -17,7 +17,7 @@ export default function ProdutoItemLista({produto, editarProduto, deletarProduto
           {produto.preco}
         </span>
       </div>
-      <input type="checkbox"/>
+      <input type="checkbox" checked={produto.verificado} onClick={verificarProduto} />
     </div>
   )
 }

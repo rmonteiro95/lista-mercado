@@ -28,13 +28,13 @@ function ListaMercado() {
 
     useEffect(()=>{
         if(inputNome.current) inputNome.current.focus()
-        setValorTotalTela(lista.reduce((total, produto) => total + (produto.preco * produto.quantidade), 0))
+        setValorTotalTela(lista.reduce((total, produto) =>  produto.verificado ? total + (produto.preco * produto.quantidade) : total, 0))
     },[lista])
     
     const adicionarProdutoLista = ()=>{
         const novoId = lista.length
         if(nomeProduto === '') return
-        const produtoTela = {id: novoId, nome: nomeProduto, quantidade: quantidadeProduto, preco: precoProduto}
+        const produtoTela = {id: novoId, nome: nomeProduto, quantidade: quantidadeProduto, preco: precoProduto, verificado: true}
         const valorTotal = precoProduto * quantidadeProduto
         setValorTotalTela(valorTotalTela + valorTotal)
 
@@ -80,6 +80,16 @@ function ListaMercado() {
             setIdProdutoEditando(null)
         })  
     }
+
+    const verificarProduto = (id, verificado) =>{
+        fetch(`http://localhost:3001/tasks${id}`,{
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({verificado: !verificado})
+        })
+        .then(response=> response.json())
+        .then(()=> setLista(lista.map(produto => produto.id === id? {...produto, verificado: !verificado}: produto)))
+    }
   return (
     <>
     <div className="main-container">
@@ -97,6 +107,7 @@ function ListaMercado() {
             produto={produto}
             editarProduto={()=> editarProtudoLista(produto.id)}
             deletarProduto={()=> deletarProduto(produto.id)}
+            verificarProduto={()=> verificarProduto(produto.id, produto.verificado)}
             />
         ))}
 
