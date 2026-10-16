@@ -15,7 +15,8 @@ function ListaMercado() {
     const [lista, setLista] = useState([])
 
     const fetchLista = ()=>{
-        fetch('http://localhost:3001/tasks')
+        // fetch('http://localhost:3001/tasks')
+        fetch('http://localhost:3000/quote')
         .then(response => response.json())
         .then(data => setLista(data))
         .catch(error => console.error('Erro ao buscar lista '))
