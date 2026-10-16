@@ -38,7 +38,6 @@ function ListaMercado() {
         const produtoTela = {id: novoId, nome: nomeProduto, quantidade: quantidadeProduto, preco: precoProduto, verificado: true}
         const valorTotal = precoProduto * quantidadeProduto
         setValorTotalTela(valorTotalTela + valorTotal)
-
         // fetch('http://localhost:3001/tasks',{
         fetch('http://localhost:3000/quote',{
             method: 'POST',
@@ -61,7 +60,8 @@ function ListaMercado() {
     }
 
     const deletarProduto = (id)=>{
-        fetch(`http://localhost:3001/tasks/${id}`, {
+        // fetch(`http://localhost:3001/tasks/${id}`, {
+        fetch(`http://localhost:3000/quote/${id}`, {
             method: 'DELETE'
         })
         .then(() => setLista(lista.filter(produto => produto.id !== id)))

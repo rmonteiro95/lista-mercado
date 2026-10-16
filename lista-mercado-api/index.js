@@ -29,9 +29,16 @@ app.get('/quote', (req, res) => {
 });
 
 app.post('/quote', (req, res) =>{
-  const novoProduto = req.body;
+  const novoProduto = req.body
   quotes.push(novoProduto)
-  fs.writeFileSync(quotesPath, JSON.stringify(quotes, null, 2), 'utf8');
+  fs.writeFileSync(quotesPath, JSON.stringify(quotes, null, 2), 'utf8')
+  res.status(201).json(novoProduto)
+})
+
+app.delete('/quote/:id', (req, res) =>{
+  const idProdutoDeletado = Number(req.params.id)
+  quotes = quotes.filter(prod => prod.id !== idProdutoDeletado)
+  fs.writeFileSync(quotesPath, JSON.stringify(quotes, null, 2), 'utf8')
 })
 
 app.listen(PORT, () => {
