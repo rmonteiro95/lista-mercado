@@ -6,6 +6,7 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 app.use(cors());
+app.use(express.json())
 const quotesPath = path.join(__dirname, 'data', 'quotes.json');
 let quotes = [];
 
@@ -28,7 +29,9 @@ app.get('/quote', (req, res) => {
 });
 
 app.post('/quote', (req, res) =>{
-  console.log(req.body)
+  const novoProduto = req.body;
+  quotes.push(novoProduto)
+  fs.writeFileSync(quotesPath, JSON.stringify(quotes, null, 2), 'utf8');
 })
 
 app.listen(PORT, () => {

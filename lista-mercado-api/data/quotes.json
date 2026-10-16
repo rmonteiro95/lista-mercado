@@ -1,9 +1,16 @@
 [
   {
-      "id": 1,
-      "nome": "bolacha",
-      "quantidade": 1,
-      "preco": "3.50",
-      "verificado": true
-    }
+    "id": 1,
+    "nome": "bolacha",
+    "quantidade": 1,
+    "preco": "3.50",
+    "verificado": true
+  },
+  {
+    "id": 1,
+    "nome": "roberto",
+    "quantidade": 1,
+    "preco": "3",
+    "verificado": true
+  }
 ]

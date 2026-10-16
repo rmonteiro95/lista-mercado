@@ -39,7 +39,8 @@ function ListaMercado() {
         const valorTotal = precoProduto * quantidadeProduto
         setValorTotalTela(valorTotalTela + valorTotal)
 
-        fetch('http://localhost:3001/tasks',{
+        // fetch('http://localhost:3001/tasks',{
+        fetch('http://localhost:3000/quote',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(produtoTela)
