@@ -38,7 +38,6 @@ function ListaMercado() {
         const produtoTela = {id: novoId, nome: nomeProduto, quantidade: quantidadeProduto, preco: precoProduto, verificado: true}
         const valorTotal = precoProduto * quantidadeProduto
         setValorTotalTela(valorTotalTela + valorTotal)
-        // fetch('http://localhost:3001/tasks',{
         fetch('http://localhost:3000/quote',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -60,7 +59,6 @@ function ListaMercado() {
     }
 
     const deletarProduto = (id)=>{
-        // fetch(`http://localhost:3001/tasks/${id}`, {
         fetch(`http://localhost:3000/quote/${id}`, {
             method: 'DELETE'
         })
@@ -68,7 +66,7 @@ function ListaMercado() {
     }
 
     const botaoEditarProdutoLista = ()=>{
-        fetch(`http://localhost:3001/tasks/${idProdutoEditando}`, {
+        fetch(`http://localhost:3000/quote/${idProdutoEditando}`, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({nome: nomeProduto, quantidade: quantidadeProduto, preco: precoProduto})
@@ -84,7 +82,7 @@ function ListaMercado() {
     }
 
     const verificarProduto = (id, verificado) =>{
-        fetch(`http://localhost:3001/tasks${id}`,{
+        fetch(`http://localhost:3000/quote/verificar/${id}`,{
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({verificado: !verificado})
