@@ -2,7 +2,7 @@
 
 Aplicativo para uso em mercados, ajuda a listar produtos com nomes e preços e mostra a soma do valor total.
 
-## Tecnologias Utilizadas
+### Tecnologias Utilizadas
 
 Este projeto foi desenvolvido utilizando as seguintes tecnologias e ferramentas:
 
@@ -17,7 +17,7 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias e ferramentas:
 - **[Express](https://expressjs.org/)** — Framework web para construção de APIs REST
 - **[JSON Persistence / FS](https://nodejs.org/api/fs.html)** — Manipulação de dados e arquivos locais
 
-## Funcionalidades
+### Funcionalidades
 
 - [x] **Leitura de dados:** Busca e exibe a lista de registros cadastrados.
 - [x] **Atualização de status:** Atualiza o estado (`checked`/verificado) do usuário.
@@ -25,7 +25,7 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias e ferramentas:
 - [x] **Remoção (`DELETE`):** Rota para exclusão de dados com tratamento de fluxo.
 - [ ] *Próxima funcionalidade a implementar...*
 
-## Como Executar o Projeto
+### Como Executar o Projeto
 
 ### Pré-requisitos
 
