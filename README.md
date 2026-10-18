@@ -9,8 +9,8 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias e ferramentas:
 ### **Front-end / Interface**
 - **[React](https://reactjs.org/)** — Biblioteca para construção de interfaces
 - **[JavaScript (ES6+)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)** — Lógica do cliente
-- **[HTML5 / CSS3](https://developer.mozilla.org/pt-BR/docs/Web/CSS)** — Estrutura e estilização responsiva]
-- **[BOOTSTRAP]**
+- **[HTML5 / CSS3](https://developer.mozilla.org/pt-BR/docs/Web/CSS)** — Estrutura e estilização responsiva
+- **[BOOTSTRAP](https://icons.getbootstrap.com)** - Icones 
 
 ### **Back-end / API**
 - **[Node.js](https://nodejs.org/)** — Ambiente de execução JavaScript
@@ -20,43 +20,11 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias e ferramentas:
 ### Funcionalidades:
 
 - [x] **Leitura de dados:** Busca e exibe a lista de registros cadastrados.
-- [x] **Atualização de status:** Atualiza o estado (`checked`/verificado) do usuário.
+- [x] **Atualização de status:** Atualiza o estado (verificado) dos registros cadastrados.
 - [x] **Envio e persistência (`POST`):** Recebe e grava novas informações formatadas via `express.json()`.
 - [x] **Remoção (`DELETE`):** Rota para exclusão de dados com tratamento de fluxo.
 - [ ] *Próxima funcionalidade a implementar...*
 
-### Como Executar o Projeto:
-
-- Pré-requisitos
-Antes de começar, certifique-se de ter instalado em sua máquina:
-
-* Git
-* Node.js
-* Gerenciador de pacotes npm
-
-### Passo a passo
-
-Clone o repositório:
-- Bash
-- git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
-
-### Acesse a pasta do projeto:
-
-- Bash
-- cd seu-repositorio
-
-### Instale as dependências:
-- Bash
-- npm install
-
-### Inicie o servidor/aplicação:
-- Bash
-- npm start
-- npm run dev
-
-### Acesse no navegador:
-
-- Front-end: http://localhost:3000 / Backend: http://localhost:3000/quote
 
 ## Autor
 - Desenvolvido por Roberto Monteiro
