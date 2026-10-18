@@ -27,18 +27,18 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias e ferramentas:
 
 ### Como Executar o Projeto:
 
-Pré-requisitos
+- Pré-requisitos
 Antes de começar, certifique-se de ter instalado em sua máquina:
 
 * Git
-* Node.js (versão LTS recomendada)
-* Gerenciador de pacotes npm ou yarn
+* Node.js
+* Gerenciador de pacotes npm
 
 ### Passo a passo
 
 Clone o repositório:
-Bash
-git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+- Bash
+- git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
 
 ### Acesse a pasta do projeto:
 
