@@ -7,12 +7,13 @@ const app = express();
 const PORT = 3000;
 app.use(cors());
 app.use(express.json())
-const quotesPath = path.join(__dirname, 'data', 'quotes.json');
-let quotes = [];
-
+//DEFINE O CAMINHO PARA A BASE DE DADOS NO ARQUIVO JSON
+const listaPath = path.join(__dirname, 'data', 'quotes.json');
+let produtos = [];
+// TENTA LER O ARQUIVO JSON DE FORMA SINCRONA E CONVERTE O CONTEUDO PARA A O OBJETO
 try {
-  const data = fs.readFileSync(quotesPath, 'utf8');
-  quotes = JSON.parse(data);
+  const data = fs.readFileSync(listaPath, 'utf8');
+  produtos = JSON.parse(data);
 } catch (err) {
   console.error('Erro ao ler quotes.json:', err);
 }
@@ -21,41 +22,40 @@ app.get('/', (req, res) => {
   res.send('API de lista-mercado em funcionamento!');
 });
 
-app.get('/quote', (req, res) => {
-  // if (!Array.isArray(quotes) || quotes.length === 0) {
-  //   return res.status(500).json({ error: 'Nenhuma citação disponível.' });
-  // }  
-  res.json(quotes);
+//METODO PARA RETORNAR DO SERVIDOR A LISTA QUE ESTÁ NO ARQUIVO JSON
+app.get('/produto', (req, res) => {
+  res.json(produtos);
 });
 
-app.post('/quote', (req, res) =>{
+app.post('/produto', (req, res) =>{
   const novoProduto = req.body
-  quotes.push(novoProduto)
-  fs.writeFileSync(quotesPath, JSON.stringify(quotes, null, 2), 'utf8')
+  produtos.push(novoProduto)
+  fs.writeFileSync(listaPath, JSON.stringify(produtos, null, 2), 'utf8')
   res.json(novoProduto)
 })
 
-app.delete('/quote/:id', (req, res) =>{
+app.delete('/produto/:id', (req, res) =>{
   const idProdutoDeletado = Number(req.params.id)
-  quotes = quotes.filter(prod => prod.id !== idProdutoDeletado)
-  fs.writeFileSync(quotesPath, JSON.stringify(quotes, null, 2), 'utf8')
-  res.json(idProdutoDeletado)
+  produtos = produtos.filter(prod => prod.id !== idProdutoDeletado)
+  fs.writeFileSync(listaPath, JSON.stringify(produtos, null, 2), 'utf8')
+  //RETORNA SUCESSO (204 NO CONTENT) E ENCERRA A RESPOTA SEM ENVIAR DADOS
+  res.status(204).end()
 })
 
-//No Express rotas específicas devem ficar acima das genéricas.
-app.patch('/quote/verificar/:id', (req, res)=>{
+//NO EXPRESS ROTAS ESPECIFICAS DEVEM FICAR ACIMA DAS GENERICAS
+app.patch('/produto/verificar/:id', (req, res)=>{
   const idProdutoVerificado = Number(req.params.id)
   const prodVeri = req.body
-  quotes = quotes.map(produto => produto.id === idProdutoVerificado ? {...produto, ...prodVeri} : produto)
-  fs.writeFileSync(quotesPath, JSON.stringify(quotes, null, 2), 'utf8')
+  produtos = produtos.map(produto => produto.id === idProdutoVerificado ? {...produto, ...prodVeri} : produto)
+  fs.writeFileSync(listaPath, JSON.stringify(produtos, null, 2), 'utf8')
   res.json(prodVeri)
 })
 
-app.patch('/quote/:id', (req, res) =>{
+app.patch('/produto/:id', (req, res) =>{
   const idProdutoEditado = Number(req.params.id)
   const prodEdit = req.body
-  quotes = quotes.map(produto => produto.id === idProdutoEditado ? {...produto, ...prodEdit} : produto)
-  fs.writeFileSync(quotesPath, JSON.stringify(quotes, null, 2), 'utf8')
+  produtos = produtos.map(produto => produto.id === idProdutoEditado ? {...produto, ...prodEdit} : produto)
+  fs.writeFileSync(listaPath, JSON.stringify(produtos, null, 2), 'utf8')
   res.json(prodEdit)
 })
 

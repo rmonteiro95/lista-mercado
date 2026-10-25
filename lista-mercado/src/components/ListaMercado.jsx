@@ -13,7 +13,7 @@ function ListaMercado() {
     const [lista, setLista] = useState([])
 
     const fetchLista = ()=>{
-        fetch('http://localhost:3000/quote')
+        fetch('http://localhost:3000/produto')
         .then(response => response.json())
         .then(data => setLista(data))
         .catch(error => console.error('Erro ao buscar lista: ' + error))
@@ -35,7 +35,7 @@ function ListaMercado() {
         const produtoTela = {id: novoId, nome: nomeProduto, quantidade: quantidadeProduto, preco: precoProduto, verificado: true}
         const valorTotal = precoProduto * quantidadeProduto
         setValorTotalTela(valorTotalTela + valorTotal)
-        fetch('http://localhost:3000/quote',{
+        fetch('http://localhost:3000/produto',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(produtoTela)
@@ -48,7 +48,7 @@ function ListaMercado() {
     }
 
     const deletarProduto = (id)=>{
-        fetch(`http://localhost:3000/quote/${id}`, {
+        fetch(`http://localhost:3000/produto/${id}`, {
             method: 'DELETE'
         })
         .then(() => setLista(lista.filter(produto => produto.id !== id)))
@@ -65,7 +65,7 @@ function ListaMercado() {
 
     //botao que salva o elemento editado e manda para o servidor
     const botaoEditarProdutoLista = ()=>{
-        fetch(`http://localhost:3000/quote/${idProdutoEditando}`, {
+        fetch(`http://localhost:3000/produto/${idProdutoEditando}`, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({nome: nomeProduto, quantidade: quantidadeProduto, preco: precoProduto})
@@ -81,7 +81,7 @@ function ListaMercado() {
     }
 
     const verificarProduto = (id, verificado) =>{
-        fetch(`http://localhost:3000/quote/verificar/${id}`,{
+        fetch(`http://localhost:3000/produto/verificar/${id}`,{
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({verificado: !verificado})
