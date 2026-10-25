@@ -9,17 +9,14 @@ function ListaMercado() {
     const [precoProduto, setPrecoProduto] = useState(0)
     const [idProdutoEditando, setIdProdutoEditando] = useState(null)
     const [valorTotalTela, setValorTotalTela] = useState(0)
-
     const inputNome = useRef(null)
-
     const [lista, setLista] = useState([])
 
     const fetchLista = ()=>{
-        // fetch('http://localhost:3001/tasks')
         fetch('http://localhost:3000/quote')
         .then(response => response.json())
         .then(data => setLista(data))
-        .catch(error => console.error('Erro ao buscar lista '))
+        .catch(error => console.error('Erro ao buscar lista: ' + error))
     }
 
     useEffect(()=>{
@@ -50,6 +47,14 @@ function ListaMercado() {
         setPrecoProduto(0)
     }
 
+    const deletarProduto = (id)=>{
+        fetch(`http://localhost:3000/quote/${id}`, {
+            method: 'DELETE'
+        })
+        .then(() => setLista(lista.filter(produto => produto.id !== id)))
+    }
+
+    //botão localizado no elento da lista 
     const editarProtudoLista = (id)=>{
         setIdProdutoEditando(id)
         setNomeProduto(lista.find(produto => produto.id === id).nome)
@@ -58,20 +63,14 @@ function ListaMercado() {
         if(inputNome.current) inputNome.current.focus()
     }
 
-    const deletarProduto = (id)=>{
-        fetch(`http://localhost:3000/quote/${id}`, {
-            method: 'DELETE'
-        })
-        .then(() => setLista(lista.filter(produto => produto.id !== id)))
-    }
-
+    //botao que salva o elemento editado e manda para o servidor
     const botaoEditarProdutoLista = ()=>{
         fetch(`http://localhost:3000/quote/${idProdutoEditando}`, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({nome: nomeProduto, quantidade: quantidadeProduto, preco: precoProduto})
         })
-        .then(res=> res.json())
+        // .then(res=> res.json())
         .then(()=>{ 
             setLista(lista.map(produto => produto.id === idProdutoEditando ? {...produto, nome: nomeProduto, quantidade: quantidadeProduto, preco: precoProduto} : produto))
             setNomeProduto('')

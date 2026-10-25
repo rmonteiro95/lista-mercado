@@ -39,9 +39,10 @@ app.delete('/quote/:id', (req, res) =>{
   const idProdutoDeletado = Number(req.params.id)
   quotes = quotes.filter(prod => prod.id !== idProdutoDeletado)
   fs.writeFileSync(quotesPath, JSON.stringify(quotes, null, 2), 'utf8')
+  res.json(idProdutoDeletado)
 })
 
-//No Express, a ordem das rotas importa porque ele executa a primeira que corresponde de cima para baixo, exigindo que rotas específicas fiquem sempre acima das genéricas.
+//No Express rotas específicas devem ficar acima das genéricas.
 app.patch('/quote/verificar/:id', (req, res)=>{
   const idProdutoVerificado = Number(req.params.id)
   const prodVeri = req.body
